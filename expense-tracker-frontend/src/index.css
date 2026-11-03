@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ledger-bg font-body text-ledger-ink antialiased;
+}
+
+.money {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Perforated / torn-receipt edge, used on group expense cards */
+.torn-edge-bottom {
+  position: relative;
+}
+.torn-edge-bottom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 10px;
+  background: radial-gradient(circle at 8px 0, transparent 6px, #F5F6FB 6.5px);
+  background-size: 16px 10px;
+  background-repeat: repeat-x;
+}
+
+.paper-panel {
+  @apply bg-ledger-paper rounded-card shadow-[0_1px_2px_rgba(30,36,48,0.04),0_8px_24px_-12px_rgba(30,36,48,0.15)];
+}
+
+:focus-visible {
+  outline: 2px solid #5B5BD6;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
